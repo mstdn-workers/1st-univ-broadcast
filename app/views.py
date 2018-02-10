@@ -14,7 +14,7 @@ ROOT_URL = os.environ['ROOT_URL']
 # Create your views here.
 def index(request):
     access_token = request.COOKIES.get('access_token')
-    ms = Mastodon(client_id=CLIENT_ID, api_base_url=API_BASE_URL, access_token=access_token) 
+    ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL, access_token=access_token) 
     if access_token == None:
         print("true")
         return redirect("app:login")    
