@@ -22,7 +22,7 @@
     <h1>Login</h1>
     
       <div>
-        <form action="{% url 'redirect2auth' %}" method="POST">
+        <form action="{% url 'app:redirect2auth' %}" method="POST">
             {% csrf_token %}
             <label for="username">Username:</label>
             <input type="text" name="username" placeholder="Username">
