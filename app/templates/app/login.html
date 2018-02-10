@@ -19,9 +19,15 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <h1>Login</h1>
     
-      <h2>Test</h2>
+      <div>
+        <form action="{% url 'app:redirect2auth' %}" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" name="username" placeholder="Username">
+            <input type="submit" value="Login" /> 
+        </form>
+      </div>>
 
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
