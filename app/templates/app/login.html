@@ -19,16 +19,17 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Login</h1>
     
+    <div>
+    <h1>Login</h1>
+    <p>社畜丼にログインしてください。</p>
       <div>
         <form action="{% url 'app:redirect2auth' %}" method="POST">
             {% csrf_token %}
-            <label for="username">Username:</label>
-            <input type="text" name="username" placeholder="Username">
-            <input type="submit" value="Login" /> 
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
         </form>
       </div>
+    </div>
 
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
