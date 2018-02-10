@@ -4,10 +4,9 @@ from django.http import HttpResponse
 from mastodon import Mastodon
 import os
 
-MASTODON_BASE_URL = os.environ['MASTODON_BASE_URL']
+API_BASE_URL = os.environ['API_BASE_URL']
 CLIENT_ID = os.environ['CLIENT_ID'] 
 CLIENT_SECRET = os.environ['CLIENT_SECRET']
-ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 REDIRECT_URI = os.environ['REDIRECT_URI']
 
 
@@ -24,6 +23,8 @@ def login(request):
     return render(request, 'app/login.html')
 
 def redirect2auth(request):
+    ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
+    print(ms.auth_request_url(redirect_uris=REDIRECT_URI))
     return HttpResponse("リダイレクト中です...")
 
 def redirected(request):
