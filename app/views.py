@@ -27,4 +27,4 @@ def redirect2auth(request):
     return redirect(ms.auth_request_url(redirect_uris=REDIRECT_URI))
 
 def redirected(request):
-    return HttpResponse(str(request.GET.items()))
+    return HttpResponse(str(request.GET['code']))
