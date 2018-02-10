@@ -3,11 +3,12 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from mastodon import Mastodon
 import os
+import requests
 
 API_BASE_URL = os.environ['API_BASE_URL']
 CLIENT_ID = os.environ['CLIENT_ID'] 
 CLIENT_SECRET = os.environ['CLIENT_SECRET']
-REDIRECT_URI = os.environ['REDIRECT_URI']
+ROOT_URL = os.environ['ROOT_URL']
 
 
 # Create your views here.
@@ -24,9 +25,11 @@ def login(request):
 
 def redirect2auth(request):
     ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
-    return redirect(ms.auth_request_url(redirect_uris=REDIRECT_URI))
+    return redirect(ms.auth_request_url(redirect_uris=os.path.join(ROOT_URL, 'redirected')))
 
 def redirected(request):
-    ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
-    access_token = ms.log_in(code=request.GET['code'])
+    ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL, redirect_uris=os.path.join(ROOT_URL, 'redirected'))
+    access_token = ms.log_in(code=request.GET['code'], )
     return HttpResponse(request.GET['code'])
+def redirected2(request):
+    return HttpResponse(request.GET['access_token'])
