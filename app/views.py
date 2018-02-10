@@ -29,7 +29,7 @@ def redirect2auth(request):
 
 def redirected(request):
     ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
-    access_token = ms.log_in(code=request.GET['code'], redirect_uri=os.path.join(ROOT_URL, 'redirected'))
+    access_token = ms.log_in(code=request.GET['code'])
     return HttpResponse(access_token)
 def redirected2(request):
     return HttpResponse(request.GET['access_token'])
