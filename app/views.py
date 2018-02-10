@@ -9,6 +9,7 @@ API_BASE_URL = os.environ['API_BASE_URL']
 CLIENT_ID = os.environ['CLIENT_ID'] 
 CLIENT_SECRET = os.environ['CLIENT_SECRET']
 ROOT_URL = os.environ['ROOT_URL']
+DOMAIN = os.environ['DOMAIN']
 
 
 # Create your views here.
@@ -32,7 +33,7 @@ def redirected(request):
     ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
     access_token = ms.log_in(code=request.GET['code'], redirect_uri=os.path.join(ROOT_URL, 'redirected'))
     res = HttpResponse(access_token)
-    res.set_cookie('access_token', access_token)
+    res.set_cookie(key='access_token', value=access_token, domain=DOMAIN)
     return res
 def redirected2(request):
     return HttpResponse(request.GET['access_token'])
