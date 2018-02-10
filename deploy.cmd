@@ -5,7 +5,7 @@
 :: Version: 1.0.15
 :: ----------------------
 
-SET PYTHON_HOME=D:\home\python361x86
+SET PYTHON_HOME=D:\home\python364x64
 SET PYTHON=%PYTHON_HOME%\python.exe
 SET PIP=%PYTHON% -m pip
 
