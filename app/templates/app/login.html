@@ -23,11 +23,12 @@
     
       <div>
         <form action="{% url 'redirect2auth' %}" method="POST">
+            {% csrf_token %}
             <label for="username">Username:</label>
             <input type="text" name="username" placeholder="Username">
             <input type="submit" value="Login" /> 
         </form>
-      </div>>
+      </div>
 
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
