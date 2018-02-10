@@ -24,8 +24,7 @@ def login(request):
 
 def redirect2auth(request):
     ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
-    print(ms.auth_request_url(redirect_uris=REDIRECT_URI))
-    return HttpResponse("リダイレクト中です...")
+    return HttpResponse(ms.auth_request_url(redirect_uris=REDIRECT_URI))
 
 def redirected(request):
     return HttpResponse(str(request.POST))
