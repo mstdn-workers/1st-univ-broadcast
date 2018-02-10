@@ -18,7 +18,7 @@ def index(request):
     if access_token == None:
         print("true")
         return redirect("app:login")    
-    return HttpResponse(ms.status_post('test'))
+    return HttpResponse(ms.toot('test'))
     # return render(request, 'app/index.html')
 
 def login(request):
