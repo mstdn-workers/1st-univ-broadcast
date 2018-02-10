@@ -15,11 +15,10 @@ ROOT_URL = os.environ['ROOT_URL']
 def index(request):
     access_token = request.COOKIES.get('access_token')
     ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL, access_token=access_token) 
-    ms.status_post('test')
     if access_token == None:
         print("true")
         return redirect("app:login")    
-    return HttpResponse('access_token: '+access_token)
+    return HttpResponse(ms.status_post('test'))
     # return render(request, 'app/index.html')
 
 def login(request):
