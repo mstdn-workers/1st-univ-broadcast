@@ -23,11 +23,10 @@ def index(request):
     # return render(request, 'app/index.html')
 
 def login(request):
-    return render(request, 'app/login.html')
-
-def redirect2auth(request):
     ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
-    return redirect(ms.auth_request_url(redirect_uris=os.path.join(ROOT_URL, 'redirected')))
+    auth_request_url = ms.auth_request_url(redirect_uris=os.path.join(ROOT_URL, 'redirected'))
+    context = {'auth_request_url': auth_request_url}
+    return render(request, 'app/login.html', context)
 
 def redirected(request):
     ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
@@ -37,3 +36,6 @@ def redirected(request):
     return res
 def redirected2(request):
     return HttpResponse(request.GET['access_token'])
+
+def auth(request):
+    return HttpResponse()
