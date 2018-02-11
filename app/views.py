@@ -38,8 +38,8 @@ def redirected(request):
     return res
 def redirected2(request):
     return HttpResponse(request.GET)
-
+"""
 def auth(request):
-    if request.GET['code'] is not None:
-
+    # if request.GET['code'] is not None:
     return HttpResponse()
+"""
