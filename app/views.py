@@ -14,7 +14,11 @@ DOMAIN = os.environ['DOMAIN']
 
 # Create your views here.
 def index(request):
-    access_token = request.get_signed_cookie('access_token')
+    access_token = None
+    try:
+        access_token = request.get_signed_cookie('access_token')
+    except:
+        pass
     ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL, access_token=access_token) 
     if access_token == None:
         print("true")
