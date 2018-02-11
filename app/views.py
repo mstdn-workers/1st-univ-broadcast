@@ -14,12 +14,12 @@ DOMAIN = os.environ['DOMAIN']
 
 # Create your views here.
 def index(request):
-    access_token = request.COOKIES.get('access_token')
+    access_token = request.get_signed_cookie('access_token')
     ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL, access_token=access_token) 
     if access_token == None:
         print("true")
         return redirect("app:login")    
-    return HttpResponse(ms.toot('りふぁくたするぞい'))
+    return redirect("app:broadcast")
     # return render(request, 'app/index.html')
 
 def login(request):
@@ -32,14 +32,23 @@ def login(request):
 
 def redirected(request):
     ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
-    access_token = ms.log_in(code=request.GET['code'], redirect_uri=os.path.join(ROOT_URL, 'redirected'))
+    access_token = ms.log_in(code=request.GET['code'], redirect_uri=os.path.join(ROOT_URL, 'auth'))
     res = HttpResponse(access_token)
     res.set_cookie(key='access_token', value=access_token, domain=DOMAIN)
     return res
 def redirected2(request):
     return HttpResponse(request.GET)
-"""
+
 def auth(request):
-    # if request.GET['code'] is not None:
-    return HttpResponse()
-"""
+    res = redirect("app:index")
+    if request.GET['code'] is not None and request.GET['access_token'] is None:
+        ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
+        access_token = ms.log_in(code=request.GET['code'], redirect_uri=os.path.join(ROOT_URL, 'auth'))
+        res.set_signed_cookie(key='access_token', value=access_token, domain=DOMAIN)
+    return res
+
+def broadcast(request):
+    access_token = request.get_signed_cookie('access_token')
+    if access_token is None:
+        return redirect("app:login")
+    return HttpResponse("broadcast")

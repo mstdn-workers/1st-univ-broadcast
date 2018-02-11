@@ -5,5 +5,7 @@ app_name = 'app'
 urlpatterns = [
     url(r'^login$', views.login, name='login'),
     url(r'^redirected$', views.redirected, name='redirected'),
-     url(r'^$', views.index, name='index'),
+    url(r'^auth$', views.auth, name='auth'),
+    url(r'broadcast$', views.broadcast, name='broadcast'),
+    url(r'^$', views.index, name='index'),
 ]
