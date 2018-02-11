@@ -20,20 +20,12 @@
   </head>
   <body>
 
-    {{ debug }}
     <div>
     <h1>Login</h1>
     <p>社畜丼にログインしてください。</p>
     <button type="button" class="btn btn-primary btn-lg btn-block" onclick="location.href='{{ auth_request_url }}'">Login</button>
-      <div>
-        <form action="{{ auth_request_url }}" >
-            {% csrf_token %}
-            <button type="submit" class="btn btn-primary btn-lg btn-block">gin</button>
-        </form>
-      </div>
     </div>
 
-    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
