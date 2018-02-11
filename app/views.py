@@ -25,7 +25,8 @@ def index(request):
 def login(request):
     ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
     auth_request_url = ms.auth_request_url(redirect_uris=os.path.join(ROOT_URL, 'redirected'))
-    context = {'auth_request_url': auth_request_url}
+    debug = auth_request_url
+    context = {'debug': debug, 'auth_request_url': auth_request_url}
     return render(request, 'app/login.html', context)
 
 def redirected(request):
