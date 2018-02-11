@@ -52,7 +52,11 @@ def auth(request):
     return res
 
 def broadcast(request):
-    access_token = request.get_signed_cookie('access_token')
+    access_token = None
+    try:
+        access_token = request.get_signed_cookie('access_token')
+    except:
+        pass
     if access_token is None:
         return redirect("app:login")
     return HttpResponse("broadcast")
