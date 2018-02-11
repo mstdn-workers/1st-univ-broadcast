@@ -48,7 +48,7 @@ def auth(request):
     if request.GET['code'] is not None and request.GET['access_token'] is None:
         ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
         access_token = ms.log_in(code=request.GET['code'], redirect_uri=os.path.join(ROOT_URL, 'auth'))
-        res.set_signed_cookie(key='access_token', value=access_token, domain=DOMAIN)
+        # res.set_signed_cookie(key='access_token', value=access_token, domain=DOMAIN)
     return res
 
 def broadcast(request):
