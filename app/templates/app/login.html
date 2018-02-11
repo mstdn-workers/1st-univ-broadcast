@@ -24,7 +24,7 @@
     <h1>Login</h1>
     <p>社畜丼にログインしてください。</p>
       <div>
-        <form action="{{ auth_request_url }}" method="POST">
+        <form action="{{ auth_request_url }}" method="GET">
             {% csrf_token %}
             <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
         </form>
