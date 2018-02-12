@@ -9,7 +9,7 @@
     <title>Login - 社畜丼1周年記念 オンライン東西合同オフ</title>
 
     <!-- Bootstrap -->
-    <link href="{% static "app/css/login.css" %}" rel="stylesheet">
+    <link href="{% static "app/css/bootstrap.css" %}" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -18,18 +18,30 @@
     <![endif]-->
   </head>
   <body>
-    <div class="login-page">
-      <div class="form">
-        <form class="login-form">
-            <h1>Login</h1>
-            <p>"{{ service_name }}"にログインしてください。</p>
-            <button type="button" class="btn btn-primary btn-large btn-block" onclick="location.href='{{ auth_request_url }}'">Login</button>
-        </form>
-      </div>
-    </div>
+
+    <div class="container">
+        <div class="row">
+        <div class="span12">
+          <form class="form-horizontal" action='' method="POST">
+            <fieldset>
+              <div id="legend">
+                <legend class="">Login</legend>
+              </div>
+              <div class="control-group">
+                <!-- Button -->
+                <h2>"{{ service_name }}"にログインしてください。</h2> 
+                <div class="controls">
+                  <button class="btn btn-success" onclick="location.href='{{ auth_request_url }}'">Login</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+    
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static "app/js/login.js" %}"></script>
+    <script src="{% static "app/js/bootstrap.min.js" %}"></script>
   </body>
 </html>
