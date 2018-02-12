@@ -34,15 +34,6 @@ def login(request):
     }
     return render(request, 'app/login.html', context)
 
-def redirected(request):
-    ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
-    access_token = ms.log_in(code=request.GET['code'], redirect_uri=os.path.join(ROOT_URL, 'auth'))
-    res = HttpResponse(access_token)
-    res.set_cookie(key='access_token', value=access_token, domain=DOMAIN)
-    return res
-def redirected2(request):
-    return HttpResponse(request.GET)
-
 def auth(request):
     res = redirect("app:index")
     if request.GET['code'] is not None:
