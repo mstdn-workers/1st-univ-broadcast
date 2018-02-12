@@ -63,4 +63,4 @@ def broadcast(request):
         pass
     if access_token is None:
         return redirect("app:login")
-    return HttpResponse("broadcast")
+    return render(request, "app/broadcast.html")
