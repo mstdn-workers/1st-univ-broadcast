@@ -10,6 +10,7 @@ CLIENT_ID = os.environ['CLIENT_ID']
 CLIENT_SECRET = os.environ['CLIENT_SECRET']
 ROOT_URL = os.environ['ROOT_URL']
 DOMAIN = os.environ['DOMAIN']
+REDIRECT_URL = os.environ['REDIRECT_URL']
 
 
 # Create your views here.
@@ -23,13 +24,14 @@ def index(request):
     if access_token == None:
         print("true")
         return redirect("app:login")    
-    return redirect("app:broadcast")
+    return redirect(REDIRECT_URL)
     # return render(request, 'app/index.html')
 
 def login(request):
     ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
     auth_request_url = ms.auth_request_url(redirect_uris=os.path.join(ROOT_URL, 'auth'))
     context = {
+        'service_name'
         'auth_request_url': auth_request_url,
     }
     return render(request, 'app/login.html', context)
