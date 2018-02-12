@@ -9,8 +9,7 @@
     <title>Login - 社畜丼1周年記念 オンライン東西合同オフ</title>
 
     <!-- Bootstrap -->
-    <link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
-
+    <link href="{% static "app/css/login.css" %}" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -20,10 +19,10 @@
   </head>
   <body>
 
-    <div>
+    <div class="login">
     <h1>Login</h1>
-    <p>社畜丼にログインしてください。</p>
-    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="location.href='{{ auth_request_url }}'">Login</button>
+    <p>"{{ service_name }}"にログインしてください。</p>
+    <button type="button" class="btn btn-primary btn-large btn-block" onclick="location.href='{{ auth_request_url }}'">Login</button>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
