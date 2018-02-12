@@ -11,6 +11,8 @@ CLIENT_SECRET = os.environ['CLIENT_SECRET']
 ROOT_URL = os.environ['ROOT_URL']
 DOMAIN = os.environ['DOMAIN']
 REDIRECT_URL = os.environ['REDIRECT_URL']
+SERVICE_NAME = os.environ['SERVICE_NAME']
+
 
 
 # Create your views here.
@@ -31,7 +33,7 @@ def login(request):
     ms = Mastodon(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, api_base_url=API_BASE_URL)
     auth_request_url = ms.auth_request_url(redirect_uris=os.path.join(ROOT_URL, 'auth'))
     context = {
-        'service_name'
+        'service_name': SERVICE_NAME,
         'auth_request_url': auth_request_url,
     }
     return render(request, 'app/login.html', context)
