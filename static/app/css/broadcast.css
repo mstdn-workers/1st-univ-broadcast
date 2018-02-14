@@ -6,8 +6,3 @@ div.main {
     border : 5px solid maroon ;
     background-color : lightgreen ;
 }
-
-video {
-	max-width: 100%;
-	height: auto;
-}
