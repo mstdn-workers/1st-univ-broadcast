@@ -6,10 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Login - 社畜丼1周年記念 オンライン東西合同オフ</title>
+    <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href="{% static "app/css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "app/css/broadcast.css" %}" rel="stylesheet">
+    <link href="//amp.azure.net/libs/amp/2.1.3/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
+    <script src="//amp.azure.net/libs/amp/2.1.3/azuremediaplayer.min.js"></script>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -18,16 +22,14 @@
     <![endif]-->
   </head>
   <body>
-
-    <div>
-    <h1>Login</h1>
-    <h2>"{{ service_name }}"にログインしてください。</h2>
-    <button type="button" class="btn btn-primary btn-large" onclick="location.href='{{ auth_request_url }}'">Login</button>
+    
+    <div class="video-wrapper">
+      <div class="video-container">
+        <video id="azuremediaplayer" class="azuremediaplayer amp-default-skin amp-big-play-centered" tabindex="0"></video>
+      </div>
     </div>
     
-
     
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
